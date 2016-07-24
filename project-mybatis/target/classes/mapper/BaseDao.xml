@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="dao.BaseDao">
+
+<select id="getAll" resultType="Person">
+	select * from person
+</select>
+
+<select id="getPersonById" resultType="Person" parameterType="java.lang.String">
+	select * from person where id =#{id}
+</select>
+
+<insert id="addOnePerson" parameterType="Person" useGeneratedKeys="true" keyProperty="id">
+
+insert into person (id, name,age, birthday, address)
+
+values (#{id,jdbcType=VARCHAR},
+
+#{name,jdbcType=SMALLINT},
+
+#{age,jdbcType=SMALLINT},
+
+#{birthday,jdbcType=DATE},
+
+#{address,jdbcType=VARCHAR}
+
+)
+
+</insert>
+
+
+</mapper>  
